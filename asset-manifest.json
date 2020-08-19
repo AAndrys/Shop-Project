@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.5f4ee4bb.chunk.css",
-    "main.js": "/static/js/main.fc9ec827.chunk.js",
-    "main.js.map": "/static/js/main.fc9ec827.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.f2e4f4fd.js",
-    "runtime-main.js.map": "/static/js/runtime-main.f2e4f4fd.js.map",
-    "static/js/2.c604d67a.chunk.js": "/static/js/2.c604d67a.chunk.js",
-    "static/js/2.c604d67a.chunk.js.map": "/static/js/2.c604d67a.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.4be951eb5b33a0dc991453b8c22de3b9.js": "/precache-manifest.4be951eb5b33a0dc991453b8c22de3b9.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.5f4ee4bb.chunk.css.map": "/static/css/main.5f4ee4bb.chunk.css.map",
-    "static/js/2.c604d67a.chunk.js.LICENSE.txt": "/static/js/2.c604d67a.chunk.js.LICENSE.txt",
-    "static/media/car.png": "/static/media/car.cce6bacc.png",
-    "static/media/men.png": "/static/media/men.13636bb5.png",
-    "static/media/women.png": "/static/media/women.44adaeb7.png"
+    "main.css": "/Shop-Project/static/css/main.5f4ee4bb.chunk.css",
+    "main.js": "/Shop-Project/static/js/main.f57abada.chunk.js",
+    "main.js.map": "/Shop-Project/static/js/main.f57abada.chunk.js.map",
+    "runtime-main.js": "/Shop-Project/static/js/runtime-main.bcdb1e90.js",
+    "runtime-main.js.map": "/Shop-Project/static/js/runtime-main.bcdb1e90.js.map",
+    "static/js/2.c604d67a.chunk.js": "/Shop-Project/static/js/2.c604d67a.chunk.js",
+    "static/js/2.c604d67a.chunk.js.map": "/Shop-Project/static/js/2.c604d67a.chunk.js.map",
+    "index.html": "/Shop-Project/index.html",
+    "precache-manifest.23f8eda9d7b9bf7968d74acba579de1d.js": "/Shop-Project/precache-manifest.23f8eda9d7b9bf7968d74acba579de1d.js",
+    "service-worker.js": "/Shop-Project/service-worker.js",
+    "static/css/main.5f4ee4bb.chunk.css.map": "/Shop-Project/static/css/main.5f4ee4bb.chunk.css.map",
+    "static/js/2.c604d67a.chunk.js.LICENSE.txt": "/Shop-Project/static/js/2.c604d67a.chunk.js.LICENSE.txt",
+    "static/media/car.png": "/Shop-Project/static/media/car.cce6bacc.png",
+    "static/media/men.png": "/Shop-Project/static/media/men.13636bb5.png",
+    "static/media/women.png": "/Shop-Project/static/media/women.44adaeb7.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.f2e4f4fd.js",
+    "static/js/runtime-main.bcdb1e90.js",
     "static/js/2.c604d67a.chunk.js",
     "static/css/main.5f4ee4bb.chunk.css",
-    "static/js/main.fc9ec827.chunk.js"
+    "static/js/main.f57abada.chunk.js"
   ]
 }
