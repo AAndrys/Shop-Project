@@ -20,7 +20,7 @@ class App extends React.Component {
         <NavBar />
         <Switch>
           <Route 
-            path='/'
+            path='/Shop-Project'
             exact 
             render={(props) => <Home {...props} /> } 
           />
