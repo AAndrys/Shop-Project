@@ -1,0 +1,179 @@
+.header-container {
+    width: 100%;
+    min-height: 100px;
+}
+header {
+    @include flexCenter();
+
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    .top-header {
+        @include flexCenter();
+
+        width: 100%;
+        height: 80px;
+        min-height: 80px;
+        flex-direction: row;
+        .brand-logo {
+            @include flexCenter();
+
+            width: 10%;
+            height: 100%;
+            // border-right: 1px solid lightgrey;
+            a {
+                text-decoration: none;
+                color: inherit;
+                outline: none;
+            }
+            h1 {
+                font-size: calc(1px + 2vmin);
+            }   
+        }
+        .search-bar-header {
+            @include flexCenter();
+
+            width: 70%;
+            height: 100%;
+            input {
+                width: 80%;
+                height: 30px;
+                text-align: center;
+                border: 1px solid lightgrey;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                border-top-right-radius: 0px;
+                border-bottom-right-radius: 0px;
+                outline: none;
+            }
+            button {
+                width: 100px;
+                height: 34px;
+                padding: 0;
+                border: 1px solid lightgrey;
+                user-select: none;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                font-weight: bold;
+                outline: none;
+                cursor: pointer;
+                &:hover {
+                    background-color: rgb(211, 211, 211);
+                }
+                &:active {
+                    background-color: rgb(172, 172, 172);
+                }
+            }
+        }
+        .right-center {
+            @include flexCenter();
+
+            width: 20%;
+            height: 100%;
+            // border-left: 1px solid lightgrey;
+            a {
+                @include flexCenter();
+
+                outline: none;
+                text-decoration: none;
+                color: inherit;
+                flex-direction: column;
+                &:hover {
+                    color: $mainColor;
+                }
+            }
+            .user-login-center {
+                @include flexCenter();
+
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+                svg {
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+                p {
+                    margin: 0;
+                    font-size: 12px;
+                }
+            }
+            .user-register-center {
+                @include flexCenter();
+
+                width: 100%;
+                height: 100%;
+                svg {
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+                p {
+                    margin: 0;
+                    font-size: 12px;
+                }
+            }
+            .cart-center {
+                @include flexCenter();
+
+                width: 100%;
+                height: 100%;
+                svg {
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+                p {
+                    margin: 0;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    .bottom-header {
+        width: 100%;
+        height: 100%;
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            background-color: rgb(235, 235, 235);
+            a {
+                @include flexCenter();
+
+                width: 100%;
+                padding: 20px 20px;
+                outline: none;
+                text-decoration: none;
+                position: relative;
+                transition: all .2s linear;
+                &:hover {
+                    background-color: rgb(219, 219, 219);
+                }
+                &::before {
+                    content: '';
+                    width: 0%;
+                    height: 2px;
+                    opacity: 0;
+                    background-color: black;
+                    position: absolute;
+                    bottom: 0;
+                    transition: all .2s linear;
+                }
+                &:hover::before {
+                    width: 50%;
+                    opacity: 1;
+                }
+                li {
+                    width: 100%;
+                    height: 100%;
+                    // font-size: 16px;
+                    font-size: calc(2px + 1vmin);
+                    color: black;
+                    font-weight: bold;
+                    user-select: none;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
