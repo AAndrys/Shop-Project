@@ -27,7 +27,7 @@ const MobileNavBar = ({ openSideMenu }) => {
             <header className='mobile-header'>
                 <section className="top-header">
                     <div className="brand-logo">
-                        <Link to='/'>
+                        <Link to='/Shop-Project/'>
                             <h1>SHOPI</h1>
                         </Link>
                     </div>
