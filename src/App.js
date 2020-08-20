@@ -5,18 +5,33 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //Components
 import Home from './components/home';
 import NavBar from './components/navBar';
+import MobileNavBar from './components/mobileNavBar';
+import MobileSideMenu from './components/mobileSideMenu'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'App'
+      title: 'App',
+      sideMenuOpen: false,
     }
   }
+
+  openSideMenu = () => {
+    this.setState({
+      sideMenuOpen: !this.state.sideMenuOpen
+    });
+    document.body.style.overflow = this.state.sideMenuOpen ? "" : "hidden";
+  };
+
   render() {
+    const { sideMenuOpen } = this.state;
+
     return (
       <Router>
       {/* <div className="container"> */}
+        {sideMenuOpen ? <MobileSideMenu closeSideMenu={this.openSideMenu} /> : null}
+        <MobileNavBar openSideMenu={this.openSideMenu} />
         <NavBar />
         <Switch>
           <Route 
