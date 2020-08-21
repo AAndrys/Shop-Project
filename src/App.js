@@ -6,7 +6,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/home';
 import NavBar from './components/navBar';
 import MobileNavBar from './components/mobileNavBar';
-import MobileSideMenu from './components/mobileSideMenu'
+import MobileSideMenu from './components/mobileSideMenu';
+import LoginPage from './components/login';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,6 +39,11 @@ class App extends React.Component {
             path='/Shop-Project/'
             exact 
             render={(props) => <Home {...props} /> } 
+          />
+          <Route
+            path='/account'
+            exact
+            render={(props) => <LoginPage {...props} />}
           />
         </Switch>
       {/* </div> */}

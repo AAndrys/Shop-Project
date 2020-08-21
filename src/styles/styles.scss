@@ -1,6 +1,8 @@
 @import './variables';
 @import './mixinStyles';
 
+@import './animations';
+
 //navbar
 @import './navbar';
 @import './mobileNavBar';
@@ -8,3 +10,4 @@
 //components styles
 @import './app';
 @import './home';
+@import './login';

@@ -142,6 +142,7 @@
         z-index: 1102;
         background-color: white;
         flex-direction: column;
+        animation: sideMenuTransform .3s linear;
         .mobile-side-menu-top-close {
             width: 100%;
             display: flex;
