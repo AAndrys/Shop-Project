@@ -1121,4 +1121,9 @@ header .bottom-header nav ul a li {
 .login-area .login-box .login-main-box #loginForm button:active {
   background-color: #1668b9;
 }
+
+.login-area .login-box .login-main-box #loginForm p {
+  font-size: 15px;
+  padding-top: 20px;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { connect } from 'react-redux';
+import { getUser } from '../operations/operations';
 
-const LoginPage = () => {
+const LoginPage = ({ userInfo, getUserFromServer }) => {
+
+    const usernameRef = useRef();
+    const passwordRef = useRef();
+
+    const login = (e) => {
+        e.preventDefault();
+        getUserFromServer(usernameRef.current.value, passwordRef.current.value);
+    }
 
     return (
         <div className='login-container'>
@@ -15,10 +25,11 @@ const LoginPage = () => {
                         </div>
                         <form id='loginForm'>
                             <label>Nazwa użytkownika</label>
-                            <input type="text" name="inputUsername" placeholder='Nazwa użytkownika' />
+                            <input type="text" name="inputUsername" placeholder='Nazwa użytkownika' ref={usernameRef}/>
                             <label>Hasło</label>
-                            <input type="password" name="inputUsername" placeholder='Hasło' />
-                            <button type="submit" onClick={(e) => e.preventDefault()}>Zaloguj</button>
+                            <input type="password" name="inputUsername" placeholder='Hasło' ref={passwordRef} />
+                            <button type="submit" onClick={login}>Zaloguj</button>
+                            {userInfo.invalidUser ? <p>Błędny login lub hasło.</p> : null}
                         </form>
                     </div>
                 </div>
@@ -27,4 +38,12 @@ const LoginPage = () => {
     );
 }
 
-export default LoginPage;
+const mapStateToProps = (state) => ({
+    userInfo: state.UserInfo
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    getUserFromServer: (username, password) => dispatch(getUser(username, password)) 
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

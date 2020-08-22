@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/styles.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 //Components
 import Home from './components/home';
@@ -8,6 +9,7 @@ import NavBar from './components/navBar';
 import MobileNavBar from './components/mobileNavBar';
 import MobileSideMenu from './components/mobileSideMenu';
 import LoginPage from './components/login';
+import Account from './components/account';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +29,7 @@ class App extends React.Component {
 
   render() {
     const { sideMenuOpen } = this.state;
+    const { userInfo } = this.props;
 
     return (
       <Router>
@@ -43,7 +46,7 @@ class App extends React.Component {
           <Route
             path='/account'
             exact
-            render={(props) => <LoginPage {...props} />}
+            render={(props) => userInfo.isLogged ? <Account {...props} /> : <LoginPage {...props} />}
           />
         </Switch>
       {/* </div> */}
@@ -52,4 +55,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  userInfo: state.UserInfo
+});
+
+export default connect(mapStateToProps, {})(App);
