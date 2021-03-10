@@ -1,5 +1,5 @@
-import UserInfo from './userInfo';
-import { combineReducers } from 'redux';
+import UserInfo from "./userInfo";
+import { combineReducers } from "redux";
 
 const allReducers = combineReducers({ UserInfo });
 

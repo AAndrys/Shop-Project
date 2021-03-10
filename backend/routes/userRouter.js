@@ -1,43 +1,178 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const UserModel = require('../db/schema/user');
+const UserModel = require("../db/schema/user");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const {
+  findInDatabaseSimilarResult,
+  isEmptyData,
+  authenticate,
+} = require("../middlewares/index");
 
-router.get('/list', async (req, res) => {
-    try {
-        const userFind = await UserModel.find();
-        res.json(userFind);
-    } catch (err) {
-        console.log(err);
-    }
+/////////////////////////////////
+router.get("/list", async (req, res) => {
+  try {
+    const userFind = await UserModel.find();
+    res.json(userFind);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-router.get('/getUser', async (req, res) => {
-    console.log(req.query)
-    try {
-        const userFind = await UserModel.find({ 
-            // userEmail: req.body.userEmail,
-            username: req.query.username,
-            password: req.query.password,
-        });
-        res.json(userFind);
-    } catch (err) {
-        console.log(err);
-    }
+router.get("/list2", authenticate, async (req, res) => {
+  try {
+    const userFind = await UserModel.find();
+    res.json(userFind);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-router.post('/create', async (req, res) => {
-    const newUser = new UserModel({
-        userEmail: req.body.userEmail,
-        username: req.body.username,
-        password: req.body.password,
-    })
+// router.get("/test", async (req, res) => {
+//   console.log(req.query);
+
+//   try {
+//     const userFind = await UserModel.find({
+//       username: req.query.username,
+//     })
+
+//     await UserModel.updateOne(
+//       { username: "admin" },
+//       [
+//         // {
+//         //   $addFields: { Token: '' },
+//         // },
+//         // {
+//         //   $unset: [ 'Token' ],
+//         // },
+//       ],
+//       { new: true } // to return updated document
+//     );
+
+//     res.json(userFind);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+
+///////////////////////////////////////////////
+
+router.post("/auth/login", isEmptyData, async (req, res) => {
+  const { userEmail, username, password } = req.body;
+
+  try {
+    const userFind = await UserModel.find({
+      userEmail: userEmail,
+      username: username,
+    }).select("_id username userEmail password");
+
+    if (userFind.length) {
+      const validPassword = await bcrypt.compare(
+        password,
+        userFind[0].password
+      );
+
+      if (validPassword) {
+        const accessToken = jwt.sign(
+          { userEmail, username },
+          process.env.TOKEN_SECRET,
+          { expiresIn: 86400 }
+        );
+        const refreshToken = jwt.sign(
+          { userEmail, username },
+          process.env.REFRESH_TOKEN_SECRET,
+          { expiresIn: 525600 }
+        );
+
+        await UserModel.updateOne(
+          { _id: userFind[0]._id },
+          {
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+          },
+          function (err) {
+            if (err) return res.status(400).json({ success: false });
+
+            res.cookie("JWT", accessToken, {
+              maxAge: 86400000,
+              httpOnly: true,
+            });
+
+            res.status(200).send({ accessToken, refreshToken, success: true });
+          }
+        );
+      } else {
+        res.status(400).json({ success: false });
+      }
+    } else
+      res.json({
+        message: "Cannot find this user in database!",
+        success: false,
+      });
+  } catch (err) {
+    res.status(400).json({ message: err });
+  }
+});
+
+router.post(
+  "/auth/register",
+  isEmptyData,
+  findInDatabaseSimilarResult,
+  async (req, res) => {
+    const { userEmail, username, password } = req.body;
+
     try {
-        const createdUser = await newUser.save();
-        console.log(createdUser);
-        res.json(createdUser);
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const newUser = new UserModel({
+        userEmail,
+        username,
+        password: hashedPassword,
+      });
+
+      const createdUser = await newUser.save();
+
+      console.log(createdUser);
+      res.status(201).json({ registered: true, success: true });
     } catch (err) {
-        console.log(err);
+      res.status(400).json({ success: false });
     }
+  }
+);
+
+router.post("/auth/refresh", isEmptyData, async (req, res) => {
+  const { refreshToken } = req.body;
+
+  if (!refreshToken) {
+    return res.status(401).send({ message: "No token." });
+  }
+
+  try {
+    const findToken = await UserModel.find({
+      refreshToken,
+    }).select("_id username userEmail accessToken refreshToken");
+
+    if (findToken.length) {
+      await jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+
+      const accessToken = jwt.sign(
+        { userEmail: findToken[0].userEmail, username: findToken[0].username },
+        process.env.TOKEN_SECRET,
+        { expiresIn: 20 }
+      );
+
+      res.cookie("JWT", accessToken, {
+        maxAge: 86400000,
+        httpOnly: true,
+      });
+
+      res.send({ accessToken });
+    } else {
+      res.status(400).json({ message: "Token not found." });
+    }
+  } catch (err) {
+    res.status(400).json({ message: err });
+  }
 });
 
 module.exports = router;
