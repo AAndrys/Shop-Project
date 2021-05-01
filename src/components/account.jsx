@@ -28,8 +28,8 @@ const Account = () => {
         <h1>Loading...</h1>
       </div>
     );
-  };
-  
+  }
+
   return (
     <div className="account-container">
       <h1>Welcome to your account</h1>
@@ -41,9 +41,7 @@ const Account = () => {
         Click!
       </button>
       <p>Username: {data.username}</p>
-      <p>
-        Title:{" "}
-      </p>
+      <p>Title: </p>
     </div>
   );
 };

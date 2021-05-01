@@ -67,8 +67,8 @@ router.post("/auth/login", isEmptyData, async (req, res) => {
             userEmail: userEmail,
           }
         : {
-          username: username 
-        }
+            username: username,
+          }
     ).select("_id username userEmail password");
 
     if (userFind.length) {
@@ -210,7 +210,6 @@ router.post("/auth/authenticate", authenticate, async (req, res) => {
   } catch (err) {
     res.status(400).json({ message: err });
   }
-
 });
 
 module.exports = router;
