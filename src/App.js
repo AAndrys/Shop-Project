@@ -10,6 +10,7 @@ import MobileNavBar from "./components/mobileNavBar";
 import MobileSideMenu from "./components/mobileSideMenu";
 import LoginPage from "./components/login";
 import Account from "./components/account";
+import { authenticate } from "./operations/operations";
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +19,10 @@ class App extends React.Component {
       title: "App",
       sideMenuOpen: false,
     };
+  }
+
+  componentDidMount() {
+    this.props.authenticateUser();
   }
 
   openSideMenu = () => {
@@ -67,4 +72,9 @@ const mapStateToProps = (state) => ({
   userInfo: state.UserInfo,
 });
 
-export default connect(mapStateToProps, {})(App);
+const mapDispatchToProps = (dispatch) => ({
+  authenticateUser: () =>
+    dispatch(authenticate()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

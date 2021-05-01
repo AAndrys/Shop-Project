@@ -22,7 +22,7 @@ router.get("/list", async (req, res) => {
 router.get("/list2", authenticate, async (req, res) => {
   try {
     const userFind = await UserModel.find();
-    res.json(userFind);
+    res.json(userFind[0]);
   } catch (err) {
     console.log(err);
   }
@@ -61,10 +61,15 @@ router.post("/auth/login", isEmptyData, async (req, res) => {
   const { userEmail, username, password } = req.body;
 
   try {
-    const userFind = await UserModel.find({
-      userEmail: userEmail,
-      username: username,
-    }).select("_id username userEmail password");
+    const userFind = await UserModel.find(
+      userEmail
+        ? {
+            userEmail: userEmail,
+          }
+        : {
+          username: username 
+        }
+    ).select("_id username userEmail password");
 
     if (userFind.length) {
       const validPassword = await bcrypt.compare(
@@ -161,18 +166,51 @@ router.post("/auth/refresh", isEmptyData, async (req, res) => {
         { expiresIn: 20 }
       );
 
-      res.cookie("JWT", accessToken, {
-        maxAge: 86400000,
-        httpOnly: true,
-      });
+      await UserModel.updateOne(
+        { _id: findToken[0]._id },
+        {
+          accessToken: accessToken,
+        },
+        function (err) {
+          if (err) return res.status(400).json({ success: false });
 
-      res.send({ accessToken });
+          res.cookie("JWT", accessToken, {
+            maxAge: 86400000,
+            httpOnly: true,
+          });
+
+          res.send({ accessToken });
+        }
+      );
     } else {
       res.status(400).json({ message: "Token not found." });
     }
   } catch (err) {
     res.status(400).json({ message: err });
   }
+});
+
+router.post("/auth/authenticate", authenticate, async (req, res) => {
+  const token = req.cookies.JWT;
+
+  if (token === undefined)
+    return res.status(401).send({ message: "Token is null." });
+
+  try {
+    const userAccessToken = await UserModel.find({
+      accessToken: token,
+    }).select("_id username userEmail accessToken refreshToken");
+
+    res.cookie("JWT", userAccessToken[0].accessToken, {
+      maxAge: 86400000,
+      httpOnly: true,
+    });
+
+    res.status(201).json({ user: userAccessToken[0], success: true });
+  } catch (err) {
+    res.status(400).json({ message: err });
+  }
+
 });
 
 module.exports = router;

@@ -8,12 +8,10 @@ const userState = {
 const UserInfo = (state = userState, action) => {
   switch (action.type) {
     case "SAVE_USER":
-      const username = action.username;
-      const email = action.email;
       return {
         ...state,
-        email: email,
-        username: username,
+        email: action.email,
+        username: action.username,
         isLogged: true,
         invalidUser: false,
       };
