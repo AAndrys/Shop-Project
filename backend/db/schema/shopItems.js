@@ -29,8 +29,8 @@ const ShopItemSchema = new mongoose.Schema({
     required: false,
   },
   imagesNodeList: {
-      type: Image,
-      required: false,
+    type: Image,
+    required: false,
   },
   date: {
     type: Date,

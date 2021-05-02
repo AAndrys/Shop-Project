@@ -30,13 +30,16 @@ const Home = () => {
             <div className="men-image-up"></div>
             <img src={require("../assets/images/men.png")} alt="Men" />
           </div>
-            <div className="bottom-women-box" onClick={() => redirectToPage(WOMEN)}>
-              <div className="bottom-women-image-text">
-                <h1>KOBIETY</h1>
-              </div>
-              <div className="women-image-up"></div>
-              <img src={require("../assets/images/women.png")} alt="Women" />
+          <div
+            className="bottom-women-box"
+            onClick={() => redirectToPage(WOMEN)}
+          >
+            <div className="bottom-women-image-text">
+              <h1>KOBIETY</h1>
             </div>
+            <div className="women-image-up"></div>
+            <img src={require("../assets/images/women.png")} alt="Women" />
+          </div>
         </section>
       </div>
     </div>

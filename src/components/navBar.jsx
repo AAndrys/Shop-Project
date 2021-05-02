@@ -40,22 +40,29 @@ const NavBar = ({ userInfo }) => {
                 <p>Twoje konto</p>
               </Link>
             </div>
-            {!userInfo.isLogged ? <div className="user-register-center">
-              <Link to="/register">
-                <FontAwesomeIcon icon={faSignInAlt} size="1x" />
-                <p>Zarejestruj się</p>
-              </Link>
-            </div> : null}
+            {!userInfo.isLogged ? (
+              <div className="user-register-center">
+                <Link to="/register">
+                  <FontAwesomeIcon icon={faSignInAlt} size="1x" />
+                  <p>Zarejestruj się</p>
+                </Link>
+              </div>
+            ) : null}
             <div className="cart-center">
               <Link to="/cart">
                 <FontAwesomeIcon icon={faShoppingCart} size="1x" />
                 <p>Koszyk</p>
               </Link>
             </div>
-            {userInfo.isLogged && userInfo.username ? <div className="user-nickname-center">
-              <h1>Witaj,</h1>
-              <p>{userInfo?.username[0].toUpperCase()}{userInfo?.username.slice(1, userInfo.username.length)}!</p>
-            </div> : null}
+            {userInfo.isLogged && userInfo.username ? (
+              <div className="user-nickname-center">
+                <h1>Witaj,</h1>
+                <p>
+                  {userInfo?.username[0].toUpperCase()}
+                  {userInfo?.username.slice(1, userInfo.username.length)}!
+                </p>
+              </div>
+            ) : null}
           </div>
         </section>
         <section className="bottom-header">
@@ -84,7 +91,7 @@ const NavBar = ({ userInfo }) => {
 };
 
 const mapStateToProps = (state) => ({
-  userInfo: state.UserInfo
+  userInfo: state.UserInfo,
 });
 
 export default connect(mapStateToProps, {})(NavBar);
