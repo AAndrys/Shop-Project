@@ -1,21 +1,23 @@
 // import { bindActionCreators } from 'redux';
 
+import { INVALID_USER, SAVE_USER, SIGN_OUT } from "../types";
+
 const SaveUser = (username, email) => {
   return {
-    type: "SAVE_USER",
+    type: SAVE_USER,
     username: username,
     email: email,
   };
 };
 const InvalidUser = () => {
   return {
-    type: "INVALID_USER",
+    type: INVALID_USER,
   };
 };
 
 const SignOut = () => {
   return {
-    type: "SIGN_OUT",
+    type: SIGN_OUT,
   };
 };
 

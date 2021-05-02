@@ -73,6 +73,7 @@ header .top-header .brand-logo {
           align-items: center;
   width: 10%;
   height: 100%;
+  margin-left: 20px;
 }
 
 header .top-header .brand-logo a {
@@ -247,6 +248,34 @@ header .top-header .right-center .cart-center p {
   font-size: 12px;
 }
 
+header .top-header .right-center .user-nickname-center {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 20px;
+}
+
+header .top-header .right-center .user-nickname-center h1 {
+  margin: 0;
+  font-size: 12px;
+}
+
+header .top-header .right-center .user-nickname-center p {
+  margin: 0;
+  font-size: 12px;
+}
+
 header .bottom-header {
   width: 100%;
   height: 100%;
@@ -353,6 +382,9 @@ header .bottom-header nav ul a li {
     margin: 0;
     font-size: 10px;
   }
+  header .top-header .right-center .user-nickname-center {
+    margin: 0;
+  }
 }
 
 .mobile-header-container {
@@ -418,7 +450,7 @@ header .bottom-header nav ul a li {
 }
 
 .mobile-header .top-header .brand-logo h1 {
-  margin: 0;
+  margin-left: 20px;
   font-size: 25px;
 }
 
@@ -533,6 +565,34 @@ header .bottom-header nav ul a li {
 .mobile-header .top-header .right-center .cart-center p {
   margin: 0;
   font-size: 10px;
+}
+
+.mobile-header .top-header .right-center .user-nickname-center {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 20px;
+}
+
+.mobile-header .top-header .right-center .user-nickname-center h1 {
+  margin: 0;
+  font-size: 12px;
+}
+
+.mobile-header .top-header .right-center .user-nickname-center p {
+  margin: 0;
+  font-size: 12px;
 }
 
 .mobile-header .bottom-mobile-menu {
@@ -1077,29 +1137,11 @@ header .bottom-header nav ul a li {
   height: 30px;
   border: none;
   border-bottom: 2px solid #1E90FF;
-  text-align: center;
+  padding: 0 10px;
   margin-bottom: 10px;
   -webkit-transition: all .1s linear;
   transition: all .1s linear;
   outline: none;
-}
-
-.login-area .login-box .login-main-box #loginForm input:hover {
-  font-size: 15px;
-  -webkit-transform: scale(1.06);
-          transform: scale(1.06);
-}
-
-.login-area .login-box .login-main-box #loginForm input:focus {
-  font-size: 15px;
-  -webkit-transform: scale(1.06);
-          transform: scale(1.06);
-}
-
-.login-area .login-box .login-main-box #loginForm input:active {
-  font-size: 15px;
-  -webkit-transform: scale(1.06);
-          transform: scale(1.06);
 }
 
 .login-area .login-box .login-main-box #loginForm button {

@@ -55,22 +55,22 @@
                     height: 30px;
                     border: none;
                     border-bottom: 2px solid $mainColor;
-                    text-align: center;
+                    padding: 0 10px;
                     margin-bottom: 10px;
                     transition: all .1s linear;
                     outline: none;
-                    &:hover {
-                        font-size: 15px;
-                        transform: scale(1.06);
-                    }
-                    &:focus {
-                        font-size: 15px;
-                        transform: scale(1.06);
-                    }
-                    &:active {
-                        font-size: 15px;
-                        transform: scale(1.06);
-                    }
+                    // &:hover {
+                    //     font-size: 15px;
+                    //     transform: scale(1.06);
+                    // }
+                    // &:focus {
+                    //     font-size: 15px;
+                    //     transform: scale(1.06);
+                    // }
+                    // &:active {
+                    //     font-size: 15px;
+                    //     transform: scale(1.06);
+                    // }
                 }
                 button {
                     width: 40%;

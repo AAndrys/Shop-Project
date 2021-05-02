@@ -6,8 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
 
-const NavBar = () => {
+const NavBar = ({ userInfo }) => {
   const inputValueRef = useRef();
 
   const handlerSearchInput = () => {
@@ -39,18 +40,22 @@ const NavBar = () => {
                 <p>Twoje konto</p>
               </Link>
             </div>
-            <div className="user-register-center">
+            {!userInfo.isLogged ? <div className="user-register-center">
               <Link to="/register">
                 <FontAwesomeIcon icon={faSignInAlt} size="1x" />
                 <p>Zarejestruj się</p>
               </Link>
-            </div>
+            </div> : null}
             <div className="cart-center">
               <Link to="/cart">
                 <FontAwesomeIcon icon={faShoppingCart} size="1x" />
                 <p>Koszyk</p>
               </Link>
             </div>
+            {userInfo.isLogged && userInfo.username ? <div className="user-nickname-center">
+              <h1>Witaj,</h1>
+              <p>{userInfo?.username[0].toUpperCase()}{userInfo?.username.slice(1, userInfo.username.length)}!</p>
+            </div> : null}
           </div>
         </section>
         <section className="bottom-header">
@@ -78,4 +83,8 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => ({
+  userInfo: state.UserInfo
+});
+
+export default connect(mapStateToProps, {})(NavBar);

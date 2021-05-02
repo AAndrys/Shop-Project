@@ -13,14 +13,14 @@ header {
 
         width: 100%;
         height: 80px;
-        // min-height: 80px;
         flex-direction: row;
         .brand-logo {
             @include flexCenter();
 
             width: 10%;
             height: 100%;
-            // border-right: 1px solid lightgrey;
+            margin-left: 20px;
+            
             a {
                 text-decoration: none;
                 color: inherit;
@@ -70,7 +70,6 @@ header {
 
             width: 20%;
             height: 100%;
-            // border-left: 1px solid lightgrey;
             a {
                 @include flexCenter();
 
@@ -85,7 +84,6 @@ header {
             .user-login-center {
                 @include flexCenter();
 
-                // width: 100%;
                 margin-right: 20px;
                 height: 100%;
                 flex-direction: column;
@@ -101,7 +99,6 @@ header {
             .user-register-center {
                 @include flexCenter();
 
-                // width: 100%;
                 margin-right: 20px;
                 height: 100%;
                 svg {
@@ -116,11 +113,27 @@ header {
             .cart-center {
                 @include flexCenter();
 
-                // width: 100%;
                 height: 100%;
                 svg {
                     font-size: 20px;
                     cursor: pointer;
+                }
+                p {
+                    margin: 0;
+                    font-size: 12px;
+                }
+            }
+            .user-nickname-center {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin-left: 20px;
+
+                h1 {
+                    margin: 0;
+                    font-size: 12px;
                 }
                 p {
                     margin: 0;
@@ -171,7 +184,6 @@ header {
                     li {
                         width: 100%;
                         height: 100%;
-                        // font-size: 16px;
                         font-size: calc(2px + 1vmin);
                         color: black;
                         font-weight: bold;
@@ -222,6 +234,9 @@ header {
                         margin: 0;
                         font-size: 10px;
                     }
+                }
+                .user-nickname-center {
+                    margin: 0;
                 }
             }
         }

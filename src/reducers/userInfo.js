@@ -1,3 +1,5 @@
+import { INVALID_USER, SAVE_USER, SIGN_IN, SIGN_OUT } from "../types";
+
 const userState = {
   email: null,
   username: null,
@@ -7,7 +9,7 @@ const userState = {
 
 const UserInfo = (state = userState, action) => {
   switch (action.type) {
-    case "SAVE_USER":
+    case SAVE_USER:
       return {
         ...state,
         email: action.email,
@@ -15,19 +17,19 @@ const UserInfo = (state = userState, action) => {
         isLogged: true,
         invalidUser: false,
       };
-    case "SIGN_IN":
+    case SIGN_IN:
       return {
         ...state,
         logged: true,
         invalidUser: false,
       };
-    case "SIGN_OUT":
+    case SIGN_OUT:
       return {
         ...state,
         logged: false,
         invalidUser: false,
       };
-    case "INVALID_USER":
+    case INVALID_USER:
       return {
         ...state,
         email: null,
