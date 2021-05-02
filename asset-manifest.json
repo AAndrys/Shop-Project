@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/Shop-Project/static/css/main.ead1bb7a.chunk.css",
-    "main.js": "/Shop-Project/static/js/main.971c2e93.chunk.js",
-    "main.js.map": "/Shop-Project/static/js/main.971c2e93.chunk.js.map",
+    "main.css": "/Shop-Project/static/css/main.e6ae2098.chunk.css",
+    "main.js": "/Shop-Project/static/js/main.ac92392f.chunk.js",
+    "main.js.map": "/Shop-Project/static/js/main.ac92392f.chunk.js.map",
     "runtime-main.js": "/Shop-Project/static/js/runtime-main.bcdb1e90.js",
     "runtime-main.js.map": "/Shop-Project/static/js/runtime-main.bcdb1e90.js.map",
-    "static/js/2.6a57b17c.chunk.js": "/Shop-Project/static/js/2.6a57b17c.chunk.js",
-    "static/js/2.6a57b17c.chunk.js.map": "/Shop-Project/static/js/2.6a57b17c.chunk.js.map",
+    "static/js/2.cdebe3d9.chunk.js": "/Shop-Project/static/js/2.cdebe3d9.chunk.js",
+    "static/js/2.cdebe3d9.chunk.js.map": "/Shop-Project/static/js/2.cdebe3d9.chunk.js.map",
     "index.html": "/Shop-Project/index.html",
-    "precache-manifest.3d4f489ca2d1f6dd49e8c0635685c4c2.js": "/Shop-Project/precache-manifest.3d4f489ca2d1f6dd49e8c0635685c4c2.js",
+    "precache-manifest.88b379f2f339be0195a021a36b33e2e3.js": "/Shop-Project/precache-manifest.88b379f2f339be0195a021a36b33e2e3.js",
     "service-worker.js": "/Shop-Project/service-worker.js",
-    "static/css/main.ead1bb7a.chunk.css.map": "/Shop-Project/static/css/main.ead1bb7a.chunk.css.map",
-    "static/js/2.6a57b17c.chunk.js.LICENSE.txt": "/Shop-Project/static/js/2.6a57b17c.chunk.js.LICENSE.txt",
-    "static/media/car.png": "/Shop-Project/static/media/car.cce6bacc.png",
-    "static/media/men.png": "/Shop-Project/static/media/men.13636bb5.png",
-    "static/media/women.png": "/Shop-Project/static/media/women.44adaeb7.png"
+    "static/css/main.e6ae2098.chunk.css.map": "/Shop-Project/static/css/main.e6ae2098.chunk.css.map",
+    "static/js/2.cdebe3d9.chunk.js.LICENSE.txt": "/Shop-Project/static/js/2.cdebe3d9.chunk.js.LICENSE.txt",
+    "static/media/car.png": "/Shop-Project/static/media/car.51378c37.png",
+    "static/media/men.png": "/Shop-Project/static/media/men.f8f3cc52.png",
+    "static/media/women.png": "/Shop-Project/static/media/women.7cfda651.png"
   },
   "entrypoints": [
     "static/js/runtime-main.bcdb1e90.js",
-    "static/js/2.6a57b17c.chunk.js",
-    "static/css/main.ead1bb7a.chunk.css",
-    "static/js/main.971c2e93.chunk.js"
+    "static/js/2.cdebe3d9.chunk.js",
+    "static/css/main.e6ae2098.chunk.css",
+    "static/js/main.ac92392f.chunk.js"
   ]
 }
