@@ -13,6 +13,12 @@ const InvalidUser = () => {
   };
 };
 
+const SignOut = () => {
+  return {
+    type: "SIGN_OUT",
+  };
+};
+
 // const actions = bindActionCreators({ getUser })
 
-export { SaveUser, InvalidUser };
+export { SaveUser, InvalidUser, SignOut };

@@ -1,8 +1,8 @@
 import axios from "axios";
-import { SaveUser, InvalidUser } from "../actions/index";
+import { SaveUser, InvalidUser, SignOut } from "../actions/index";
 
-const getUserfromApi = async (username, password) => {
-  return await axios
+const getUserfromApi = (username, password) => {
+  return axios
     .post("/api/user/auth/login", {
       username: username,
       password: password,
@@ -22,15 +22,15 @@ export const getUser = (username, password) => {
   return async (dispatch) => {
     const user = await getUserfromApi(username, password);
     if (user) {
-      dispatch(SaveUser(username, user.email));
+      dispatch(SaveUser(user.username, user.email));
     } else {
       dispatch(InvalidUser());
     }
   };
 };
 
-const authenticateFetch = async () => {
-  return await fetch("/api/user/auth/authenticate", { method: "POST" })
+const authenticateFetch = () => {
+  return fetch("/api/user/auth/authenticate", { method: "POST" })
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };
@@ -42,7 +42,7 @@ export const authenticate = () => {
     if (auth.user) {
       dispatch(SaveUser(auth.user.username, auth.user.userEmail));
     } else {
-      dispatch(InvalidUser());
+      dispatch(SignOut());
     }
   };
 };

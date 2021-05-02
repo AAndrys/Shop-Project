@@ -22,6 +22,10 @@ app.get("/", (req, res) => {
   res.send("Hello in /");
 });
 
+app.get("*", (req, res) => {
+  res.send(`Hello in ${req.params[0]}`);
+});
+
 //SERVER LISTEN
 app.listen(port, (err) => {
   if (err) {

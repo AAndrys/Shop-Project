@@ -37,7 +37,7 @@ const LoginPage = ({ userInfo, getUserFromServer }) => {
                 placeholder="Hasło"
                 ref={passwordRef}
               />
-              <button type="submit" onClick={login}>
+              <button type="submit" onClick={(e) => login(e)}>
                 Zaloguj
               </button>
               {userInfo.invalidUser ? <p>Błędny login lub hasło.</p> : null}
