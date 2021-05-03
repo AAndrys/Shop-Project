@@ -6,9 +6,9 @@ const LoginPage = ({ userInfo, getUserFromServer }) => {
   const usernameRef = useRef();
   const passwordRef = useRef();
 
-  const login = (e) => {
+  const login = async (e) => {
     e.preventDefault();
-    getUserFromServer(usernameRef.current.value, passwordRef.current.value);
+    getUserFromServer(usernameRef.current.value.toLowerCase(), passwordRef.current.value);
   };
 
   return (
@@ -33,11 +33,11 @@ const LoginPage = ({ userInfo, getUserFromServer }) => {
               <label>Hasło</label>
               <input
                 type="password"
-                name="inputUsername"
+                name="inputPassword"
                 placeholder="Hasło"
                 ref={passwordRef}
               />
-              <button type="submit" onClick={(e) => login(e)}>
+              <button type="submit" onClick={login}>
                 Zaloguj
               </button>
               {userInfo.invalidUser ? <p>Błędny login lub hasło.</p> : null}
