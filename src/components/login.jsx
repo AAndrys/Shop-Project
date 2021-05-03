@@ -8,7 +8,10 @@ const LoginPage = ({ userInfo, getUserFromServer }) => {
 
   const login = async (e) => {
     e.preventDefault();
-    getUserFromServer(usernameRef.current.value.toLowerCase(), passwordRef.current.value);
+    getUserFromServer(
+      usernameRef.current.value.toLowerCase(),
+      passwordRef.current.value
+    );
   };
 
   return (
