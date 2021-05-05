@@ -104,36 +104,27 @@ header .top-header .search-bar-header input {
   width: 60%;
   height: 30px;
   text-align: center;
-  border: 1px solid lightgrey;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border: none;
+  border-bottom: 2px solid #1e90ff;
   outline: none;
 }
 
-header .top-header .search-bar-header button {
-  width: 100px;
-  height: 32px;
+header .top-header .search-bar-header .search-button {
+  font-size: 20px;
   padding: 0;
-  border: 1px solid lightgrey;
+  border: none;
+  background-color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
   font-weight: bold;
   outline: none;
   cursor: pointer;
 }
 
-header .top-header .search-bar-header button:hover {
-  background-color: lightgray;
-}
-
-header .top-header .search-bar-header button:active {
-  background-color: #acacac;
+header .top-header .search-bar-header .search-button:hover {
+  color: #1e90ff;
 }
 
 header .top-header .right-center {

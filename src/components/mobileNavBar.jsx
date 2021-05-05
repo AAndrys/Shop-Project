@@ -3,23 +3,15 @@ import { Link } from "react-router-dom";
 
 //Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-// import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faUser,
+  faSignInAlt,
+  faShoppingCart,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 
 const MobileNavBar = ({ openSideMenu, userInfo }) => {
-  // const inputValueRef = useRef();
-
-  // const handlerSearchInput = () => {
-  //     console.log(inputValueRef.current.value)
-  // }
-  // const run = () => {
-  //     console.log('working')
-  // }
-
   return (
     <div className="mobile-header-container">
       <header className="mobile-header">

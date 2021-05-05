@@ -20,13 +20,13 @@ const UserInfo = (state = userState, action) => {
     case SIGN_IN:
       return {
         ...state,
-        logged: true,
+        isLogged: true,
         invalidUser: false,
       };
     case SIGN_OUT:
       return {
         ...state,
-        logged: false,
+        isLogged: false,
         invalidUser: false,
       };
     case INVALID_USER:

@@ -39,29 +39,21 @@ header {
                 width: 60%;
                 height: 30px;
                 text-align: center;
-                border: 1px solid lightgrey;
-                border-top-left-radius: 20px;
-                border-bottom-left-radius: 20px;
-                border-top-right-radius: 0px;
-                border-bottom-right-radius: 0px;
+                border: none;
+                border-bottom: 2px solid $mainColor;
                 outline: none;
             }
-            button {
-                width: 100px;
-                height: 32px;
+            .search-button {
+                font-size: 20px;
                 padding: 0;
-                border: 1px solid lightgrey;
+                border: none;
+                background-color: transparent;
                 user-select: none;
-                border-top-right-radius: 20px;
-                border-bottom-right-radius: 20px;
                 font-weight: bold;
                 outline: none;
                 cursor: pointer;
                 &:hover {
-                    background-color: rgb(211, 211, 211);
-                }
-                &:active {
-                    background-color: rgb(172, 172, 172);
+                    color: $mainColor;
                 }
             }
         }

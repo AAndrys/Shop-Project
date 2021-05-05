@@ -1,27 +1,24 @@
-import axios from "axios";
 import { SaveUser, InvalidUser, SignOut } from "../actions/index";
 
-const getUserfromApi = (username, password) => {
-  return axios
-    .post("/api/user/auth/login", {
-      username: username,
-      password: password,
-    })
-    .then((response) => {
-      console.log(response);
-      const { accessToken, refreshToken, success } = response.data;
-      if (accessToken && refreshToken && success) return true;
-      else return false;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+async function getUserfromApi(username, password) {
+  const dataToSend = { username, password };
+  const response = await fetch("/api/user/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dataToSend),
+  });
+  const data = await response.json();
+
+  return await data;
+}
 
 export const getUser = (username, password) => {
   return async (dispatch) => {
     const user = await getUserfromApi(username, password);
-    if (user) {
+
+    if ((await Object.values(user).length) > 2 && user.success) {
       dispatch(SaveUser(user.username, user.email));
     } else {
       dispatch(InvalidUser());
@@ -29,17 +26,20 @@ export const getUser = (username, password) => {
   };
 };
 
-const authenticateFetch = () => {
-  return fetch("/api/user/auth/authenticate", { method: "POST" })
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
-};
+async function authenticateFetch() {
+  const response = await fetch("/api/user/auth/authenticate", {
+    method: "POST",
+  });
+  const data = await response.json();
+
+  return await data;
+}
 
 export const authenticate = () => {
   return async (dispatch) => {
     const auth = await authenticateFetch();
 
-    if (auth.user) {
+    if (auth.user && auth.success) {
       dispatch(SaveUser(auth.user.username, auth.user.userEmail));
     } else {
       dispatch(SignOut());

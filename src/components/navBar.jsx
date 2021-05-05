@@ -1,20 +1,17 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 //Font Awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faSignInAlt,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
+import SearchBar from "./searchBar";
 
 const NavBar = ({ userInfo }) => {
-  const inputValueRef = useRef();
-
-  const handlerSearchInput = () => {
-    console.log(inputValueRef.current.value);
-  };
-
   return (
     <div className="header-container">
       <header>
@@ -24,15 +21,7 @@ const NavBar = ({ userInfo }) => {
               <h1>SHOPI</h1>
             </Link>
           </div>
-          <div className="search-bar-header">
-            <input
-              type="text"
-              ref={inputValueRef}
-              placeholder="Wyszukaj produkt"
-              onChange={handlerSearchInput}
-            />
-            <button type="submit">Szukaj</button>
-          </div>
+          <SearchBar />
           <div className="right-center">
             <div className="user-login-center">
               <Link to="/account">
@@ -40,7 +29,7 @@ const NavBar = ({ userInfo }) => {
                 <p>Twoje konto</p>
               </Link>
             </div>
-            {!userInfo.isLogged ? (
+            {!userInfo.isLogged && !userInfo.username ? (
               <div className="user-register-center">
                 <Link to="/register">
                   <FontAwesomeIcon icon={faSignInAlt} size="1x" />
@@ -58,8 +47,8 @@ const NavBar = ({ userInfo }) => {
               <div className="user-nickname-center">
                 <h1>Witaj,</h1>
                 <p>
-                  {userInfo?.username[0].toUpperCase()}
-                  {userInfo?.username.slice(1, userInfo.username.length)}!
+                  {userInfo.username[0].toUpperCase()}
+                  {userInfo.username.slice(1, userInfo.username.length)}!
                 </p>
               </div>
             ) : null}

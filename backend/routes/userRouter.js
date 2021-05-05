@@ -103,7 +103,9 @@ router.post("/auth/login", isEmptyData, async (req, res) => {
               httpOnly: true,
             });
 
-            res.status(200).send({ accessToken, refreshToken, success: true });
+            res
+              .status(200)
+              .send({ username, accessToken, refreshToken, success: true });
           }
         );
       } else {
